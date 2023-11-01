@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <title>BUMTV</title>
+</head>
+
+<body>
+    <header>
+        <img src="static/images/logo.png">
+    </header>
+    <nav>
+        <a href="/landing-page">Home</a>        
+        <a href="profile">User Profile</a>
+        <form method='POST' action="{{ url_for('logout') }}">
+            <button class="logout" type="submit" name="submit" value="Logout">Logout</button>
+        </form>
+    </nav>
+    <div class="error">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        {{ message }}<br>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="main-content">
+        {% block content %} {% endblock %}
+    </div>
+    </div>
+    <footer>
+        <a class="footer-links" href="https://www.filmsite.org/">FilmSite</a>
+        <a class="footer-links" href="https://www.imdb.com">IMDb</a>
+        <a class="footer-links" href="https://www.metacritic.com">MetaCritic</a>
+        <a class="footer-links" href="https://www.rogerebert.com/reviews">RogerEbert.com</a>
+        <a class="footer-links" href="https://www.rottentomatoes.com">Rotten Tomatoes</a>
+    </footer>
+</body>
+
+</html>

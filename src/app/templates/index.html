@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="error">
+    <p>{% if errors.confirm_password!=Null %}
+        {% for errors in errors.confirm_password %}
+        {{ errors }}
+        {% endfor %}
+        {% endif %}
+    </p>
+    <p>
+        {% if errors.password!=Null %}
+        {% for errors in errors.password %}
+        {{ errors }}
+        {% endfor %}
+        {% endif %}
+    </p>
+    <p>
+        {%if errors.loginemail!=Null%}
+        {% for errors in errors.loginemail %}
+        {{ errors }}
+        {% endfor %}
+        {%endif%}
+    </p>
+    <p>
+        {%if errors.email!=Null%}
+        {% for errors in errors.email %}
+        {{ errors }}
+        {% endfor %}
+        {%endif%}
+    </p>
+</div>
+<div class="page-title-errors">
+    <center>
+        <h1>User Registration and Login</h1>
+    </center>
+</div>
+<div class="container">
+    <div class="home-left">
+        <h2>Registration</h2>
+        <form method="POST" action={{url_for('access_page')}}>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            {%if errors.first_name!=Null%}
+            {% for errors in errors.first_name %}
+            {{ errors }}
+            {% endfor %}
+            {%endif%}
+            <br>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            {%if errors.last_name!=Null%}
+            {% for errors in errors.last_name %}
+            {{ errors }}
+            {% endfor %}
+            {%endif%}
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <br>
+            <input class="app-button" type="submit" name="submit" value="Register">
+        </form>
+    </div>
+    <div class="home-right">
+        <h2>Login</h2>
+        <form method="POST" action="/home">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            {%if errors.loginpassword!=Null%}
+            {% for errors in errors.loginpassword %}
+            {{ errors }}
+            {% endfor %}
+            {%endif%}
+            <br>
+
+            <input class="app-button" type="submit" name="submit" value="Login">
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

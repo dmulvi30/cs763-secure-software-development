@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-title">
+    <center>
+        <h1>Search Results for "{{ query }}"</h1>
+    </center>
+</div>
+<div class="container">
+    <div class="search-results">
+        <div class="scrollable-container-search">
+            <ul>
+                {% for result in results %}
+                <li>
+                    <strong>Title:</strong> {{ result.title }}<br>
+                    <img src="https://image.tmdb.org/t/p/w185{{ result.poster_path }}"
+                        alt="{{ result.title }} Poster"><br>
+                    <strong>Overview:</strong> {{ result.overview }}<br>
+                    {% if result.release_date %}
+                    <strong>Release Date:</strong> {{ result.release_date }}<br>
+                    <form method="POST" action="{{ url_for('modifyWatchlist') }}">
+                        <input type="hidden" name="mov_show_id" value="{{ result.id }}">
+                        <input type="hidden" name="media_type" value="{{ result.media_type }}">
+                        <input type="hidden" name="action" value="add">
+                        <button class="app-button" type="submit" class="btn btn-primary">Add to Watchlist</button>
+                    </form>
+                    {% endif %}
+                    <!-- Add more fields as needed -->
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

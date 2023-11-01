@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-title">
+    <center><h1>Verify User</h1></center>
+</div>
+
+<div class="container">
+    <div class="profile-data">        
+        <h2>Enter Verification Code Below:</h2>
+        <form method="POST" action="/verify">
+            <label for="verifycode">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="verifycode">Verify Code:</label>
+            <input type="text" id="verifycode" name="verifycode" required>
+            <br>
+            <input class="app-button" type="submit" name="submit" value="Verify">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

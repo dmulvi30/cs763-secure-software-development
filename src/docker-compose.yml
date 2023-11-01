@@ -1,0 +1,13 @@
+#Docker Compose file to run container on localhost
+
+services:
+  flask_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: flask_app
+    restart: always
+    volumes:
+      - "./app:/app"
+    ports:
+      - "80:80"

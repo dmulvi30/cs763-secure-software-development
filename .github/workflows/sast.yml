@@ -1,0 +1,36 @@
+name: Static Analysis Security Testing (SAST)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bandit_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.5
+
+      - name: Install dependencies
+        run: |
+          pip install -r src/app/requirements.txt
+          pip install bandit
+
+      - name: Run Bandit SAST scan
+        run: bandit -r . --severity-level 'high'
+      - name: Upload Bandit Report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: bandit-report
+          path: src/app
+          if-no-files-found: warn
+
+
+
