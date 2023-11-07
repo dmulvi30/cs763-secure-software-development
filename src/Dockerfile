@@ -12,7 +12,7 @@ RUN pip3 --version
 
 #Copy application files to container image
 WORKDIR /app
-COPY ./app /app
+COPY ./app .
 
 #Install app requirements
 RUN dnf install openssl -y
