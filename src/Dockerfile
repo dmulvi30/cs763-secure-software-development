@@ -15,7 +15,7 @@ WORKDIR /app
 COPY ./app /app
 
 #Install app requirements
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN dnf install openssl -y
 
 EXPOSE 80
