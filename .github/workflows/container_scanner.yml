@@ -19,7 +19,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/cs763-secure-software-development/bumtv:${{ github.sha }}'
+          image-ref: 'cs763-secure-software-development/bumtv:latest'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
