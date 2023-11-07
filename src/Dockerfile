@@ -15,8 +15,9 @@ WORKDIR /app
 COPY ./app /app
 
 #Install app requirements
-RUN pip3 install -r requirements.txt
 RUN dnf install openssl -y
+RUN pip3 install -r requirements.txt
+
 
 EXPOSE 80
 
