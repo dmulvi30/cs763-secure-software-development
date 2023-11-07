@@ -14,7 +14,7 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/cs763-secure-software-development/bumtv:${{ github.sha }} .
+          docker build --file src/Dockerfile 
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
