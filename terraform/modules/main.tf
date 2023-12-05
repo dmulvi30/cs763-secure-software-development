@@ -343,4 +343,3 @@ resource "aws_route" "flask_app_route_igw" {
   route_table_id         = aws_route_table.flask_app_route_table.id
 }
 
-
