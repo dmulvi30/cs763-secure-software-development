@@ -161,8 +161,36 @@ resource "aws_kms_key" "flask_app_db_kms" {
 }
 
 resource "aws_kms_alias" "flask_app_db_kms_alias" {
-  name          = "alias/my-key-alias"
+  name          = "alias/flask-kms-alias"
   target_key_id = aws_kms_key.flask_app_db_kms.key_id
+}
+
+resource "aws_kms_key_policy" "flask_app_db_kms_policy" {
+  key_id = aws_kms_key.flask_app_db_kms.id
+  policy = jsonencode({
+    Id = "rds"
+    Statement = [
+      {
+        Action = "kms:*"
+        Effect = "Allow"
+        Principal = {
+          AWS = "*"
+        }
+
+        Resource = "*"
+        Condition : {
+          StringEquals : {
+            "kms:ViaService" : [
+              "ec2.us-east-1.amazonaws.com",
+              "rds.us-west-2.amazonaws.com"
+            ]
+          }
+        }
+        Sid = "Enable IAM User Permissions"
+      },
+    ]
+    Version = "2012-10-17"
+  })
 }
 
 ########################
