@@ -14,18 +14,18 @@ terraform {
 ## ACM Resources ##
 ###################
 
-resource "aws_acm_certificate" "domain_cert" {
-  domain_name       = "bumtelevision.com"
-  validation_method = "EMAIL"
-
-  tags = {
-    Environment = "flask-app-cert"
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+#resource "aws_acm_certificate" "domain_cert" {
+#  domain_name       = "bumtelevision.com"
+#  validation_method = "EMAIL"
+#
+#  tags = {
+#    Environment = "flask-app-cert"
+#  }
+#
+#  lifecycle {
+#    create_before_destroy = true
+#  }
+#}
 
 ###################
 ## ALB Resources ##
@@ -85,10 +85,6 @@ resource "aws_lb_listener" "flask_app_alb_443" {
     target_group_arn = aws_lb_target_group.flask_app_alb_tg.arn
   }
 }
-
-##########################
-## CloudWatch Resources ##
-##########################
 
 ###################
 ## ECS Resources ##
@@ -155,11 +151,6 @@ resource "aws_ecs_service" "flask_app_svc" {
   }
 }
 
-
-###################
-## IAM Resources ##
-###################
-
 ###################
 ## KMS Resources ##
 ###################
@@ -173,10 +164,6 @@ resource "aws_kms_alias" "flask_app_db_kms_alias" {
   name          = "alias/my-key-alias"
   target_key_id = aws_kms_key.flask_app_db_kms.key_id
 }
-
-######################
-## Lambda Resources ##
-######################
 
 ########################
 ## Route-53 Resources ##
@@ -355,4 +342,3 @@ resource "aws_route" "flask_app_route_igw" {
   gateway_id             = aws_internet_gateway.flask_app_igw.id
   route_table_id         = aws_route_table.flask_app_route_table.id
 }
-
