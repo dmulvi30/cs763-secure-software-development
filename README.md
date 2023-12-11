@@ -126,4 +126,3 @@ git status
 ```
 
 For additional git commands, refer to the [GitHub Cheat Sheet:](https://education.github.com/git-cheat-sheet-education.pdf)
-
