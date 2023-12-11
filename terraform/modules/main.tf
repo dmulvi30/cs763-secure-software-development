@@ -174,18 +174,11 @@ resource "aws_kms_key_policy" "flask_app_db_kms_policy" {
         Action = "kms:*"
         Effect = "Allow"
         Principal = {
-          AWS = "*"
+          AWS = "arn:aws:iam::622508827640:user/Admin"
         }
 
         Resource = "*"
-        Condition : {
-          StringEquals : {
-            "kms:ViaService" : [
-              "ec2.us-east-1.amazonaws.com",
-              "rds.us-west-2.amazonaws.com"
-            ]
-          }
-        }
+
         Sid = "Enable IAM User Permissions"
       },
     ]
@@ -200,7 +193,7 @@ resource "aws_kms_key_policy" "flask_app_db_kms_policy" {
 resource "aws_route53_record" "flask_app" {
   zone_id = data.aws_route53_zone.bum_tv.zone_id
   name    = "bumtelevision.com"
-  type    = "A"  
+  type    = "A"
 
   alias {
     name                   = aws_lb.flask_app_alb.dns_name
