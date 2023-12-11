@@ -197,18 +197,18 @@ resource "aws_kms_key_policy" "flask_app_db_kms_policy" {
 ## Route-53 Resources ##
 ########################
 
-#resource "aws_route53_record" "flask_app" {
-#  zone_id = data.aws_route53_zone.bum_tv.zone_id
-#  name    = "bumtelevision.com"
-#  type    = "A"  
+resource "aws_route53_record" "flask_app" {
+  zone_id = data.aws_route53_zone.bum_tv.zone_id
+  name    = "bumtelevision.com"
+  type    = "A"  
 
-#  alias {
-#    name                   = aws_lb.flask_app_alb.dns_name
-#    zone_id                = aws_lb.flask_app_alb.zone_id
-#    evaluate_target_health = true
-#  }
+  alias {
+    name                   = aws_lb.flask_app_alb.dns_name
+    zone_id                = aws_lb.flask_app_alb.zone_id
+    evaluate_target_health = true
+  }
 
-#}
+}
 
 ########################
 ## RDS Resources ##
