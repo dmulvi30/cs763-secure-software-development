@@ -78,7 +78,7 @@ resource "aws_lb_listener" "flask_app_alb_443" {
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:622508827640:certificate/4eabad52-a7df-4edd-9e24-26273a463589"
+  certificate_arn   = "arn:aws:acm:us-east-1:622508827640:certificate/93784458-fd32-43ad-b677-cbbad827e83a"
 
   default_action {
     type             = "forward"
