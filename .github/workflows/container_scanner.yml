@@ -13,8 +13,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build an image from Dockerfile
+        working-directory: src
         run: |
-          docker build -t cs763-secure-software-development/bumtv:latest --file src/Dockerfile . 
+          docker build -t cs763-secure-software-development/bumtv:latest --file Dockerfile . 
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
