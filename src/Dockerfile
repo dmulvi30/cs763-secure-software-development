@@ -1,5 +1,5 @@
 #Using Redhat hardened container image
-FROM redhat/ubi8:latest
+FROM redhat/ubi8:8.9-1107.1706690950
 
 #update packages
 RUN dnf update -y
