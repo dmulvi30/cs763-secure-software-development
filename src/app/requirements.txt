@@ -9,6 +9,6 @@ jinja2
 themoviedb
 justwatch
 canistreamit
-Werkzeug==2.2.2
+Werkzeug==3.1.4
 wtforms
 email_validator
